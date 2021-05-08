@@ -1,0 +1,80 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin-left: 10%;
+  }
+  .details {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+    font-weight: bold;
+  }
+  .in2 {
+    margin-left: 25%;
+  }
+  .btn {
+    background-color: rgb(56, 167, 182);
+    margin-top: 20px;
+    padding: 7px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    outline-color: rgb(56, 167, 182);
+  }
+  .btn1 {
+    background-color: rgb(56, 167, 182);
+    padding: 7px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    outline-color: rgb(56, 167, 182);
+    width: 110px;
+  }
+  .btn2 {
+    background-color: rgb(235, 34, 34);
+    padding: 7px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    outline-color: rgb(235, 34, 34);
+    width: 160px;
+  }
+  input {
+    padding: 5px;
+    margin: none;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+  }
+  table {
+    margin-top: 5%;
+    border-collapse: collapse;
+    text-align: center;
+    font-weight: bold;
+  }
+  th {
+    font-weight: 750;
+    padding: 10px;
+    border: 1px solid black;
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 40px;
+    padding-right: 60px;
+  }
+  th {
+    background-color: rgb(133, 186, 236);
+    border: 1px solid #cccccc;
+  }
+  tr:nth-child(even) {
+    background-color: #ececec;
+  }
+  td,
+  tr {
+    border: 1px solid black;
+    padding: 7px;
+    border: 1px solid #dddddd;
+  }
+  
