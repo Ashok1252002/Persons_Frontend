@@ -1,8 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { deleteUser, setCurrent } from '../../actions/userActions'
 import '../../App.css'
 
-const UserItem = ({ user }) => {
+const UserItem = ({ user, deleteUser }) => {
+    const onDelete = () => {
+        deleteUser(user.id)
+        alert(`${user.firstName} deleted`)
+    }
+
+
     return (
         <tr>
             <td>{user.id}</td>
@@ -10,8 +18,8 @@ const UserItem = ({ user }) => {
             <td>{user.lastName}</td>
             <td>{user.age}</td>
             <td>{user.gender}</td>
-            <td><button className="btn1">Edit</button></td>
-            <td><button className="btn2">Delete</button></td>
+            <td><button className="btn1" onClick={() => setCurrent(user)}>Edit</button></td>
+            <td><button className="btn2" onClick={onDelete}>Delete</button></td>
 
         </tr>
     )
@@ -19,6 +27,8 @@ const UserItem = ({ user }) => {
 
 UserItem.propTypes = {
     user: PropTypes.object.isRequired,
+    deleteUser: PropTypes.func.isRequired,
+    setCurrent: PropTypes.func.isRequired,
 }
 
-export default UserItem;
+export default connect(null, { deleteUser,setCurrent })(UserItem);
