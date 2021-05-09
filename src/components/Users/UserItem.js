@@ -4,10 +4,14 @@ import { connect } from 'react-redux'
 import { deleteUser, setCurrent } from '../../actions/userActions'
 import '../../App.css'
 
-const UserItem = ({ user, deleteUser }) => {
+const UserItem = ({ user, deleteUser, setCurrent }) => {
     const onDelete = () => {
         deleteUser(user.id)
         alert(`${user.firstName} deleted`)
+    }
+    const onClick = () => {
+        console.log(user)
+        setCurrent(user.id);
     }
 
 
@@ -18,7 +22,7 @@ const UserItem = ({ user, deleteUser }) => {
             <td>{user.lastName}</td>
             <td>{user.age}</td>
             <td>{user.gender}</td>
-            <td><button className="btn1" onClick={() => setCurrent(user)}>Edit</button></td>
+            <td><button className="btn1" onClick={onClick}>Edit</button></td>
             <td><button className="btn2" onClick={onDelete}>Delete</button></td>
 
         </tr>

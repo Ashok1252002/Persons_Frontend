@@ -2,7 +2,7 @@ import { GET_USERS, SET_LOADING, USERS_ERROR, ADD_USER, DELETE_USER, UPDATE_USER
 
 
 const initialState = {
-    users: null,
+    users: [],
     current: null,
     loading: false,
     error: null

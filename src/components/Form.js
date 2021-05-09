@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { addUser } from '../actions/userActions'
 import PropTypes from 'prop-types'
 import '../App.css'
 
-const Form = ({ addUser }) => {
+const Form = ({ addUser, currentUser}) => {
     const [firstName, setFirstname] = useState('');
     const [lastName, setLastname] = useState('');
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
+    useEffect(() => {
+        setFirstname(currentUser.firstName)
+        setLastname(currentUser.lastName)
+
+    }, [currentUser])
 
     const onSubmit = () => {
         if(firstName === '' || lastName === '' || age === '' || gender === '') {
@@ -22,6 +27,7 @@ const Form = ({ addUser }) => {
                 age,
                 gender
             }
+            
             addUser(newUser);
             alert("New user added")
 
@@ -59,6 +65,13 @@ const Form = ({ addUser }) => {
 
 Form.prototype = {
     addUser: PropTypes.func.isRequired,
+    currentUser: PropTypes.object.isRequired,
 }
 
-export default connect(null, {addUser})(Form);
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.user.users.filter(u => u.id === state.user.current)
+    }
+}
+
+export default connect(mapStateToProps, {addUser})(Form);
