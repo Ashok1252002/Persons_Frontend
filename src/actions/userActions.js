@@ -3,7 +3,7 @@ import { GET_USERS, SET_LOADING, USERS_ERROR, ADD_USER , DELETE_USER, SET_CURREN
 // Get all users
 export const getUsers = () => async dispatch => {
     try {
-        setLoading();
+        dispatch(setLoading());
 
         const res = await fetch('/users');
         const data = await res.json();
@@ -23,7 +23,7 @@ export const getUsers = () => async dispatch => {
 // Add new user
 export const addUser = (user) => async dispatch => {
     try {
-        setLoading();
+        dispatch(setLoading());
 
         const res = await fetch('/users', {
             method: 'POST',
@@ -41,15 +41,15 @@ export const addUser = (user) => async dispatch => {
     } catch (err) {
         dispatch({
             type: USERS_ERROR,
-            payload: err.response.statusText
+            payload: err.response.data
         });
     }
 };
 
 // Delete user from server 
-export const deleteUser = (id) => async dispatch => {
+ export const deleteUser = (id) => async dispatch => {
     try {
-        setLoading();
+       dispatch(setLoading());
 
         await fetch(`/users/${id}`, {
             method: 'DELETE'
@@ -70,7 +70,7 @@ export const deleteUser = (id) => async dispatch => {
 // update User
 export const updateUser = (user) => async dispatch => {
     try {
-        setLoading();
+        dispatch(setLoading());
 
         const res = await fetch(`/users/${user.id}`, {
             method: 'PUT',
@@ -80,7 +80,7 @@ export const updateUser = (user) => async dispatch => {
             }
         });
 
-        const data = res.json()
+        const data = await res.json()
 
         dispatch({
             type: UPDATE_USER,

@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { addUser } from '../actions/userActions'
+import { addUser, updateUser, clearCurrent } from '../actions/userActions'
 import PropTypes from 'prop-types'
 import '../App.css'
 
-const Form = ({ addUser, currentUser}) => {
+const Form = ({ addUser, currentUser, updateUser, clearCurrent}) => {
     const [firstName, setFirstname] = useState('');
     const [lastName, setLastname] = useState('');
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
     useEffect(() => {
-        setFirstname(currentUser.firstName)
-        setLastname(currentUser.lastName)
+        console.log(currentUser);
+        if(currentUser){
 
-    }, [currentUser])
+            setFirstname(currentUser.firstName)
+            setLastname(currentUser.lastName)
+            setAge(currentUser.age)
+            setGender(currentUser.gender)
+        }
+        // eslint-disable-next-line
+    },[currentUser])
 
     const onSubmit = () => {
         if(firstName === '' || lastName === '' || age === '' || gender === '') {
@@ -21,16 +27,29 @@ const Form = ({ addUser, currentUser}) => {
         }
         else {
             // console.log(firstName, lastName, age, gender)
-            const newUser = {
-                firstName,
-                lastName,
-                age,
-                gender
+            if(currentUser) {
+                const updUser = {
+                    id: currentUser.id,
+                    firstName,
+                    lastName,
+                    age,
+                    gender
+                }
+                updateUser(updUser)
+                alert(`${currentUser.firstName} updated`)
+                clearCurrent()
             }
-            
-            addUser(newUser);
-            alert("New user added")
-
+            else{
+                const newUser = {
+                    firstName,
+                    lastName,
+                    age,
+                    gender
+                }
+                
+                addUser(newUser);
+                alert("New user added")
+            }
             // clear fields
             setFirstname('')
             setLastname('')
@@ -66,12 +85,14 @@ const Form = ({ addUser, currentUser}) => {
 Form.prototype = {
     addUser: PropTypes.func.isRequired,
     currentUser: PropTypes.object.isRequired,
+    updateUser: PropTypes.func.isRequired,
+    clearCurrent: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {
     return {
-        currentUser: state.user.users.filter(u => u.id === state.user.current)
+        currentUser: state.user.users.find(u => u.id === state.user.current)
     }
 }
 
-export default connect(mapStateToProps, {addUser})(Form);
+export default connect(mapStateToProps, {addUser, updateUser, clearCurrent})(Form);

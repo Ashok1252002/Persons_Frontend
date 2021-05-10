@@ -33,6 +33,13 @@ UserItem.propTypes = {
     user: PropTypes.object.isRequired,
     deleteUser: PropTypes.func.isRequired,
     setCurrent: PropTypes.func.isRequired,
+    // updateUser: PropTypes.func.isRequired,
+    // current: PropTypes.object,
 }
+// const mapStateToProps = state => {
+//     return{
+//         current: state.user.current
+//     }
+// }
 
 export default connect(null, { deleteUser,setCurrent })(UserItem);
