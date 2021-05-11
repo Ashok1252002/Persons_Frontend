@@ -10,7 +10,7 @@ const UserItem = ({ user, deleteUser, setCurrent }) => {
         alert(`${user.firstName} deleted`)
     }
     const onClick = () => {
-        console.log(user)
+        // console.log(user)
         setCurrent(user.id);
     }
 

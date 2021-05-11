@@ -31,7 +31,8 @@ export default (state = initialState, action) => {
         case UPDATE_USER:
             return{
                 ...state,
-                users: state.users.map(user => user.id === action.payload.id ? action.payload : user )
+                users: state.users.map(user => user.id === action.payload.id ? action.payload : user ),
+                loading: false
             }
         case SET_CURRENT:
             return{

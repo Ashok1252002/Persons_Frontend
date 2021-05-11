@@ -51,6 +51,7 @@ const Form = ({ addUser, currentUser, updateUser, clearCurrent}) => {
                 alert("New user added")
             }
             // clear fields
+            // setTimeout(function(){window.location.reload();},5);
             setFirstname('')
             setLastname('')
             setAge('')
@@ -65,7 +66,7 @@ const Form = ({ addUser, currentUser, updateUser, clearCurrent}) => {
                 <p>FirstName</p>
                 <input placeholder="Enter First Name" type='text' name='name' value={firstName} onChange={e => setFirstname(e.target.value)}/>
                 <p>Age</p>
-                <input placeholder="Enter Age" type='text' name='name' value={age} onChange={e => setAge(e.target.value)}/>
+                <input placeholder="Enter Age" type='number' name='name' value={age} onChange={e => setAge(e.target.value)}/>
                 <br></br>
                 {/* <button className="btn" type="submit">Register</button> */}
             </div>
@@ -73,7 +74,11 @@ const Form = ({ addUser, currentUser, updateUser, clearCurrent}) => {
                 <p>LastName</p>
                 <input placeholder="Enter Last Name" type='text' name='name' value={lastName} onChange={e => setLastname(e.target.value)}/>
                 <p>Gender</p>
-                <input placeholder="Enter Gender" type='text' name='name' value={gender} onChange={e => setGender(e.target.value)}/>
+                <input type='radio' name='gender' value='Male' onChange={e => setGender(e.target.value)}/>
+                <label for='male'> Male</label>
+                <br></br>
+                <input type='radio' name='gender' value='Female' onChange={e => setGender(e.target.value)}/>
+                <label for='female'> Female</label>
             </div>
             </div>
             <button className="btn" onClick={onSubmit}>Register</button>
