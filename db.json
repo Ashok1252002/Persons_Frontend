@@ -1,32 +1,11 @@
 {
   "users": [
     {
-      "firstName": "K. Ashok Raj",
-      "lastName": "test",
-      "age": "22",
-      "gender": "Male",
-      "id": 1
-    },
-    {
       "id": 2,
       "firstName": "Bhavya",
       "lastName": "Koribilli",
-      "age": "14",
-      "gender": "Female"
-    },
-    {
-      "id": 3,
-      "firstName": "K. Ashok Raj",
-      "lastName": "K. Ashok Raj",
       "age": "22",
       "gender": "Male"
-    },
-    {
-      "firstName": "Astha",
-      "lastName": "Majji",
-      "age": "20",
-      "gender": "Female",
-      "id": 4
     },
     {
       "id": 5,
@@ -36,18 +15,11 @@
       "gender": "Female"
     },
     {
-      "firstName": "K. Ashok Raj",
-      "lastName": "K. Ashok Raj",
+      "id": 8,
+      "firstName": "test2",
+      "lastName": "testtest",
       "age": "33",
-      "gender": "Male",
-      "id": 6
-    },
-    {
-      "id": 7,
-      "firstName": "K. Ashok Raj",
-      "lastName": "K. Ashok Raj",
-      "age": "4",
-      "gender": "Female"
+      "gender": "Male"
     }
   ]
 }
